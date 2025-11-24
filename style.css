@@ -21,8 +21,8 @@ header {
 /* Location Menu Styling - POSITIONED FIXED TOP-RIGHT */
 #location-menu {
     position: fixed; /* Locks the menu to the browser viewport */
-    top: 20px; /* Positions 20px down from the top edge */
-    right: 20px; /* Positions 20px in from the right edge */
+    top: 20px; 
+    right: 20px; 
     bottom: auto; 
     left: auto; 
     z-index: 1000; 
@@ -44,16 +44,21 @@ header {
     padding: 2px 0;
 }
 
-/* Custom Popup Styling */
+/* Custom Popup Styling - FIX: Centered and Fixed to Viewport */
 #travel-info-popup {
-    position: absolute;
-    z-index: 10; 
+    position: fixed; /* FIXED: Position relative to the viewport */
+    top: 50%; /* Start at 50% from the top */
+    left: 50%; /* Start at 50% from the left */
+    transform: translate(-50%, -50%); /* Center the element based on its own width/height */
+    width: 280px; /* Give it a set width for predictability */
+    max-width: 90%;
+    z-index: 2000; /* Ensure it's above everything */
     background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px; /* Increased padding */
+    border-radius: 12px; /* Nicer rounded corners */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3); /* Stronger shadow */
     border: 1px solid #ccc;
-    pointer-events: none; 
+    pointer-events: auto; /* IMPORTANT: Must be auto now so the button can be clicked! */
     display: none; 
 }
 /* Styling for Time and Distance (bold and larger) */
@@ -68,17 +73,19 @@ header {
 }
 #travel-info-popup h3 {
     margin-top: 0;
-    font-size: 1.1em;
+    font-size: 1.2em; /* Slightly larger title */
+    color: #A0522D; /* Match the link color */
 }
 #travel-info-popup a {
     display: block;
-    margin-top: 10px;
-    padding: 8px;
+    margin-top: 15px;
+    padding: 10px;
     background-color: #A0522D; 
     color: white;
     text-align: center;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-weight: bold;
 }
 /* Ensure cursor changes when hovering over the polyline hit area */
 .leaflet-interactive {
