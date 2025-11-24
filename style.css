@@ -25,7 +25,7 @@ header {
     right: 20px; 
     bottom: auto; 
     left: auto; 
-    z-index: 1000; /* Ensures it is above the map */
+    z-index: 1000; 
     background: white;
     padding: 15px;
     border-radius: 8px;
@@ -44,15 +44,15 @@ header {
     padding: 2px 0;
 }
 
-/* Custom Popup Styling - FIX: Fixed to Bottom-Left Corner */
+/* Custom Popup Styling - Fixed Bottom-Left */
 #travel-info-popup {
-    position: fixed; /* CRITICAL: Locks the popup to the screen */
-    bottom: 20px; /* Positions 20px up from the bottom edge */
-    left: 20px; /* Positions 20px in from the left edge */
+    position: fixed; 
+    bottom: 20px; 
+    left: 20px; 
     top: auto; 
     right: auto;
     
-    z-index: 2000; /* CRITICAL: Ensures it is on top of the map and the toggle menu (which is z-index 1000) */
+    z-index: 2000; 
     
     width: 280px; 
     max-width: 90%;
@@ -61,7 +61,7 @@ header {
     border-radius: 12px; 
     box-shadow: 0 8px 16px rgba(0,0,0,0.3); 
     border: 1px solid #ccc;
-    pointer-events: auto; /* Allows clicks on the button */
+    pointer-events: auto; 
     display: none; 
 }
 /* Styling for Time and Distance (bold and larger) */
@@ -93,4 +93,11 @@ header {
 /* Ensure cursor changes when hovering over the polyline hit area */
 .leaflet-interactive {
     cursor: pointer !important;
+}
+
+/* FINAL CRITICAL FIX FOR MAP RENDERING ISSUE */
+/* This overrides the Leaflet internal styling that sometimes collapses the map pane */
+.leaflet-container {
+    width: 100% !important;
+    height: 100% !important;
 }
