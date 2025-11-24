@@ -19,7 +19,7 @@ const locations = {
     'newport': { 
         lat: 42.0298, 
         lng: -83.3338, 
-        label: 'Newport Venue (Wedding)', 
+        label: 'Newport Venue (Ceremony)', 
         elementId: 'toggle-newport', 
         address: '8033 N Dixie Hwy, Newport, MI 48166' 
     },
@@ -167,5 +167,6 @@ function showPopup(event, routeData) {
 function hidePopup() {
     popup.classList.remove('visible');
 }
+
 
 
