@@ -6,8 +6,7 @@ body {
 }
 /* Map Container */
 #map {
-    /* CRITICAL: This height/width must be correct for the map to calculate its size */
-    height: 90vh; 
+    height: 90vh; /* Takes up 90% of the viewport height */
     width: 100%;
 }
 /* Header Styling */
@@ -16,7 +15,7 @@ header {
     padding: 15px;
     background-color: #f8f8f8;
     border-bottom: 1px solid #ddd;
-    /* Keeps content clear of the fixed menu */
+    /* FIX: Add substantial right padding to move centered text left and clear space for the fixed menu */
     padding-right: 200px; 
 }
 /* Location Menu Styling - POSITIONED FIXED TOP-RIGHT */
@@ -26,7 +25,7 @@ header {
     right: 20px; 
     bottom: auto; 
     left: auto; 
-    z-index: 1000; 
+    z-index: 1000; /* Ensures it is above the map */
     background: white;
     padding: 15px;
     border-radius: 8px;
@@ -45,15 +44,15 @@ header {
     padding: 2px 0;
 }
 
-/* Custom Popup Styling - Fixed Bottom-Left */
+/* Custom Popup Styling - FIX: Fixed to Bottom-Left Corner */
 #travel-info-popup {
-    position: fixed; 
-    bottom: 20px; 
-    left: 20px; 
+    position: fixed; /* CRITICAL: Locks the popup to the screen */
+    bottom: 20px; /* Positions 20px up from the bottom edge */
+    left: 20px; /* Positions 20px in from the left edge */
     top: auto; 
     right: auto;
     
-    z-index: 2000; /* Ensures it is always on top */
+    z-index: 2000; /* CRITICAL: Ensures it is on top of the map and the toggle menu (which is z-index 1000) */
     
     width: 280px; 
     max-width: 90%;
@@ -62,7 +61,7 @@ header {
     border-radius: 12px; 
     box-shadow: 0 8px 16px rgba(0,0,0,0.3); 
     border: 1px solid #ccc;
-    pointer-events: auto; 
+    pointer-events: auto; /* Allows clicks on the button */
     display: none; 
 }
 /* Styling for Time and Distance (bold and larger) */
