@@ -25,7 +25,7 @@ const routes = [
 
 let map; 
 let allMarkers = {}; 
-let allPolylines = []; 
+let allPolylines = {}; 
 
 // --- 2. INITIALIZE MAP ---
 document.addEventListener('DOMContentLoaded', initMap); 
@@ -41,8 +41,7 @@ function initMap() {
     drawRoutesAndMarkers();
     setupToggles(); 
     
-    // FIX: Call invalidateSize() with a slight delay to force map to recalculate 
-    // its size and center itself correctly after scrolling.
+    // Call invalidateSize() to fix map centering issues on scroll
     setTimeout(function () {
         map.invalidateSize();
     }, 100); 
@@ -56,7 +55,6 @@ function drawRoutesAndMarkers() {
             .bindTooltip(locations[key].label, { permanent: true, direction: 'right' }); 
         
         // Pin Click Listener: Route from Current Location
-        // Now passing the full location object (which contains the full address)
         marker.on('click', () => { 
             routeFromCurrentLocation(locations[key]); 
         });
@@ -131,7 +129,6 @@ function toggleLocation(locationId, isVisible) {
 
 // --- 5. ROUTE FROM CURRENT LOCATION ---
 function routeFromCurrentLocation(locationObject) {
-    // FIX: Use the 'address' property and encode it for the URL.
     const destinationAddress = encodeURIComponent(locationObject.address);
     
     // The final robust URL: Origin is left blank/general ('/dir/') forcing GPS location detection.
@@ -140,7 +137,7 @@ function routeFromCurrentLocation(locationObject) {
     window.open(googleMapsUrl, '_blank');
 }
 
-// --- 6. HANDLE INTERACTION (POPUP LOGIC - CENTERED FIX) ---
+// --- 6. HANDLE INTERACTION (POPUP LOGIC) ---
 const popup = document.getElementById('travel-info-popup');
 const popupRoute = document.getElementById('popup-route');
 const popupTime = document.getElementById('popup-time');
@@ -151,7 +148,8 @@ function showPopup(event, routeData) {
     // Only show popup if the line is currently visible (opacity > 0)
     if (event.target.options.opacity > 0) {
         
-        popupRoute.textContent = `${locations[routeData.start].label} → ${locations[routeData.end].label}`;
+        // FIX: Replaced '→' with '↔' (Unicode: \u2194)
+        popupRoute.textContent = `${locations[routeData.start].label} \u2194 ${locations[routeData.end].label}`;
         
         // Display Estimate: X min
         popupTime.textContent = `Estimate: ${routeData.time} min`;
@@ -159,10 +157,9 @@ function showPopup(event, routeData) {
         // Display Distance: Y mi
         popupDistance.textContent = `Distance: ${routeData.distance} mi`;
         
-        // Set the link
         popupLink.href = routeData.link;
 
-        // CRITICAL FIX: Removed positioning code (left/top) as CSS now handles centering.
+        // Positioning code is no longer needed as the CSS positions it fixed (bottom-left)
         
         popup.classList.add('visible');
     }
