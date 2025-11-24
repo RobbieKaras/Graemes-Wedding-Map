@@ -6,7 +6,8 @@ body {
 }
 /* Map Container */
 #map {
-    height: 90vh; /* Takes up 90% of the viewport height */
+    /* CRITICAL: This height/width must be correct for the map to calculate its size */
+    height: 90vh; 
     width: 100%;
 }
 /* Header Styling */
@@ -15,7 +16,7 @@ header {
     padding: 15px;
     background-color: #f8f8f8;
     border-bottom: 1px solid #ddd;
-    /* FIX: Add substantial right padding to move centered text left and clear space for the fixed menu */
+    /* Keeps content clear of the fixed menu */
     padding-right: 200px; 
 }
 /* Location Menu Styling - POSITIONED FIXED TOP-RIGHT */
@@ -52,7 +53,7 @@ header {
     top: auto; 
     right: auto;
     
-    z-index: 2000; 
+    z-index: 2000; /* Ensures it is always on top */
     
     width: 280px; 
     max-width: 90%;
@@ -93,11 +94,4 @@ header {
 /* Ensure cursor changes when hovering over the polyline hit area */
 .leaflet-interactive {
     cursor: pointer !important;
-}
-
-/* FINAL CRITICAL FIX FOR MAP RENDERING ISSUE */
-/* This overrides the Leaflet internal styling that sometimes collapses the map pane */
-.leaflet-container {
-    width: 100% !important;
-    height: 100% !important;
 }
