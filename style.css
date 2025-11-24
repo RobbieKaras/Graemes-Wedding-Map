@@ -6,7 +6,7 @@ body {
 }
 /* Map Container */
 #map {
-    height: 90vh; /* Takes up 90% of the viewport height */
+    height: 90vh; 
     width: 100%;
 }
 /* Header Styling */
@@ -15,10 +15,12 @@ header {
     padding: 15px;
     background-color: #f8f8f8;
     border-bottom: 1px solid #ddd;
+    /* FIX: Add substantial right padding to move centered text left and clear space for the fixed menu */
+    padding-right: 200px; 
 }
 /* Location Menu Styling - POSITIONED FIXED TOP-RIGHT */
 #location-menu {
-    position: fixed; /* FIX: Locks the menu to the browser viewport, preventing it from scrolling */
+    position: fixed; /* Locks the menu to the browser viewport */
     top: 20px; /* Positions 20px down from the top edge */
     right: 20px; /* Positions 20px in from the right edge */
     bottom: auto; 
