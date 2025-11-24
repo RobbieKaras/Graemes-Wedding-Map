@@ -1,0 +1,50 @@
+/* Minimal Reset */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    color: #333;
+}
+/* Map Container */
+#map {
+    height: 90vh; /* Takes up 90% of the viewport height */
+    width: 100%;
+    /* We keep the background color commented out now, as the map should load */
+    /* background-color: lightcoral; */ 
+}
+/* Header Styling */
+header {
+    text-align: center;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+/* Custom Popup Styling */
+#travel-info-popup {
+    position: absolute;
+    z-index: 10; /* Make sure it's above the map */
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+    /* Allows mouse events (like moving off the line) to work correctly */
+    pointer-events: none; 
+    display: none; /* Initially hidden */
+}
+#travel-info-popup.visible {
+    display: block;
+}
+#travel-info-popup h3 {
+    margin-top: 0;
+    font-size: 1.1em;
+}
+#travel-info-popup a {
+    display: block;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #A0522D; /* Elegant brown/wedding color */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+}

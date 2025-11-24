@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Travel Logistics</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20n6aR4S+N/D3IeD4b7P92/sXo8s8+1/yFvIer8d+O4="
+     crossorigin=""></script>
+     
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Wedding Travel Map!</h1>
+        <p>Click on any line for directions to the venue, reception, or airport.</p>
+    </header>
+    
+    <div id="map"></div> 
+    
+    <div id="travel-info-popup" class="hidden">
+        <h3 id="popup-route"></h3>
+        <p>Time: <span id="popup-time"></span> min</p>
+        <p>Distance: <span id="popup-distance"></span> mi</p>
+        <a id="popup-link" href="#" target="_blank">View Directions on Google Maps</a>
+    </div>
+</body>
+</html>
